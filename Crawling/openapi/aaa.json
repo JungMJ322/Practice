@@ -1,0 +1,28 @@
+{
+  'response': {
+    'service': {
+      'name': 'address',
+      'version': '2.0',
+      'operation': 'getCoord',
+      'time': '30(ms)'
+      },
+    'status': 'OK',
+    'input': {
+      'type': 'ROAD',
+      'address': '한적 2길 51-14'
+      },
+    'refined': {
+      'text': '충청남도 공주시 한적2길 51-14 (금흥동,공주신금우남퍼스트빌)',
+      'structure': {
+        'level0': '', 'level1': '', 'level2': '', 'level3': '', 'level4L': '', 'level4LC': '', 'level4A': '', 'level4AC': '', 'level5': '', 'detail': ''
+        }
+      },
+    'result': {
+      'crs': 'EPSG:4326',
+      'point': {
+        'x': '127.139095037',
+        'y': '36.479169656'
+      }
+    }
+  }
+}

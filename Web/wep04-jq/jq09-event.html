@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 400px;
+            height: 200px;
+            border: 2px solid red;
+            padding: 20px;
+            overflow: auto;
+        }
+        div p:first-child{
+            float: left;
+            border: 1px solid blue;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px
+        }
+        div p:last-child{
+            float: right;
+            border: 1px solid blue;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px
+        }
+    </style>
+
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        /*
+            이벤트 전파: 각 요소가 서로 포함관계(중첩)인 경우
+                        요소 중 하나에 이벤트가 발생하면
+                        중첩된 요소들도 이벤트가 전파된다.
+
+            이벤트 전파 막기
+                - stopPropagetion(): 이벤트 요소의 전파 막기
+                - preventDefault(): 이벤트에 의한 기본 동작 막기
+                - return false: 위의 기능 두개 모두 적용
+        */
+        $(function(){
+            // a가 div안에 p안에 a가 있기 때문에 a를 눌렀을 때 p한테 click이벤트가 전달되고
+            // div에게도 이벤트가 전달된다.
+            // 또한 이벤트 발생된 것이 전부 전달된 후 html body에 있는 기본동작이 동작된다.
+            $("a:eq(0)").click(function(){
+                alert("a 클릭!");
+                // e.stopPropagation()      // a클릭 -> naver로 이동(href 기능)
+                // e.preventDefault         // a클릭 -> q클릭 -> div클릭 (naver 이동X)
+                return false
+            });
+
+            $("p").click(function(e){
+                alert("p 클릭!");
+                e.preventDefault();         // a를 눌러 click이벤트를 실행했기 때문에 e는 a의 이벤트라 p에서 써도 기본이벤트가 막힌다
+            });
+
+            $("div").click(function(){
+                alert("div 클릭!");
+            });
+
+            // 특정 요소에 이벤트를 묶어준다.
+            /*
+            $("a:eq(1)").bind("mouseover mouseout", function(e){
+                if(e.type == "mouseover"){
+                    $(this).css("background-color", "hotpink");
+                }
+                if(e.type == "mouseout"){
+                    $(this).css("background-color", "");
+                }
+            });
+            */
+            $("a:eq(1)").bind({
+                "mouseover": function(){
+                    $(this).css("color", "gold");
+                },
+                "mouseout": function(){
+                    $(this).css("color", "");
+                }
+
+               
+            });
+
+            $("span").click(function(){
+                $("a:eq(1)").unbind();
+            });
+
+            // 이 버튼을 클릭하기 전까지는 p tag가 없었기 때문에
+            // 이 버튼으로 생성한 p tag를 클릭해도 위의 "p 클릭"동작을 하지 않는다.
+            $("button").click(function(){
+                $("body").append("<p>새로 추가된 p</p>")
+            });
+            
+            // bind()보다 .on()을 사용하는것이 좋음
+            // "body"안에 있는 "p태그"에 "클릭이벤트" 발생할때 "function()"호출
+            // $("p").on("click", function(){});
+            // $("body").on("click", "p", function(){
+            //     alert("새로 추가되는 요소도 이벤트 적용!");
+            // });
+            
+            // 기존 만들어진 p Tag에만 적용된다.
+            // $("p").on("click", function(){
+            //     alert("새로 추가되는 요소도 이벤트 적용!");
+            // });
+            // JS: addEventListener 사용!
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+    
+    <span>unbind(): 이벤트 해제</span>
+    <div>
+        <p>
+            <a href="https://www.naver.com">클릭!</a>
+        </p>
+        <p>클릭</p>
+    </div>
+
+    <div>
+        <p>
+            <a href="https://www.google.com">클릭!</a>
+        </p>
+        <p>클릭</p>
+    </div>
+
+    <button>요소 추가</button>
+
+
+</body>
+</html>

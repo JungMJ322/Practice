@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        a>img{width: 50px; height: 50px;}
+        #gallery{width: 200px; height: 200px;}
+        p{width: 350px; height: 250px;}
+        img{vertical-align: middle;}
+        a{text-decoration: none}
+
+    </style>
+
+    <script>
+
+        var num = 1
+
+        function prevGallery(){
+            num--
+
+            if(num < 1){
+                num = 5
+            }
+
+            document.getElementById('gallery').src = 'resources/imgs/0'+num+'.png'
+
+            // return을 사용한 이벤트 전파 막기(jquery때 공부!)
+            return false
+        }
+
+        function nextGallery(){
+            num++
+
+            if(num > 5){
+                num = 1
+            }
+
+            // #gallery에 scr 을 'resources/imgs/0'+num(변수)+'.png'로 화살표 누를때마다 document를 바꿔라
+            document.getElementById('gallery').src = 'resources/imgs/0'+num+'.png'
+
+            return false
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+    
+
+    <div id='gallerywrap'>
+        <p>
+            <!-- prevGallery의 return이 false이기 때문에 onclick이 return false가 되어
+                네이버로 링크가 넘어가는 것을 막는다 -->
+            <a href='http://www.naver.com' onclick='return prevGallery()'>
+                <img src='resources/imgs/arrowleft.png' alt="왼쪽화살표">
+            </a>
+
+            <img id='gallery' src="resources/imgs/01.png" alt="gallery">
+
+            <a href="#next" onclick='nextGallery()'>
+                <img src="resources/imgs/arrowright.png" alt="오른쪽화살표">
+            </a>
+        </p>
+    </div>
+</body>
+</html>

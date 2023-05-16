@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(function(){
+            // eq()는 안에서도 사용가능
+            // add() 추가적으로 선택
+            $("p:eq(0)").add("span").css("color", "red")
+
+            $("div").children().click(function(){
+                // div의 children()들 중 click 이벤트가 발생한 것들 중 tagName이 "SPAN" 일때 실행
+                // tagName을 가지고올 때 대문자로 가지고와 "SPAN"이라고 함
+                if($(this).prop("tagName") == "SPAN"){
+                    alert("span tag click!!!");
+                    $(this).css("color", "aqua")
+                    
+                }
+
+                // click 이벤트가 발생한것이 p tag라면
+                if($(this).is("p")){
+                    $(this).css("background-color", "violet")
+                }
+                
+            });
+            $("b").click(function(){
+                $("div").children().css("background-color", "");
+                $("p:eq(0)").add("span").css("color", "red")
+            });
+            
+        });
+        /*
+            attr(): HTML의 속성(attribute)  => 웹 HTML에 직접 적용될 때  (checkbox같은거 attr()로 하면 js로 제어가 안될수도)
+            prop(): JS의 속성(property)     => JS에서 제어할 객체로 가지고올 때
+        */
+
+    </script>
+
+</head>
+<body>
+    
+    <div>
+        <p>add()</p>
+        <span>ad(): 선택한 엘리먼트에 추가적으로 selector 표현식을 작성할 때 사용</span>
+        <p>is()</p>
+        <b>선택한 엘리먼트들 중에 구하는 엘리먼트가 있는지 확인할 때 사용</b>
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function inputText(){
+            // input Tag중에서 type이 text인 Tag를 가지고 와라
+            var txt = $("input:text").val();
+            // JS : value();
+            // JQ : val();
+
+            alert(txt);
+        }
+
+        function inputRadio(){
+            var radioVal = $("input:radio").val();
+            $("#a").html(radioVal);
+            // JS : innerHTML
+            // JQ : html()
+        }
+
+        function inputCheck(){
+            var checkVal = $("input:checkbox").val();
+            $("#a").html(checkVal);
+        }
+
+        /* change 동작이 일어났을 때 동작하는 것인데 아직 select Tag가 생성되지 않아 js의 onload와 같이
+        $(fucntion(){})을 사용해서 웹 페이지가 전부 load되어 select Tag를 찾을 수 있게 한 후, 
+        '.change' 이벤트가 발생했을 때 동작하도록 한다.
+        $(function(){
+            $("select").change(function(){
+                var option = $("select > option:selected");
+                alert(option.val());
+                alert($("select > option").index(option));
+            });
+        });
+        */
+        
+
+    </script>
+</head>
+<body>
+    
+
+    <form>
+        <input type="text"><br>
+        <input type="button" value="선택" onclick="inputText()"><br>
+        <input type="radio" value="radio val" onclick="inputRadio()">radio<br>
+        <input type="checkbox" value='check val' onclick="inputCheck()">check<br>
+
+        <div id="a"><p></p></div>
+        <select>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+        </select>
+    </form>
+    
+    <script>
+         $("select").change(function(){
+                var option = $("select > option:selected");
+                alert(option.val());
+                alert($("select > option").index(option));
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script type="text/javascript">
+        // 중복되는 아이디들
+        var ids=["multi","java","script"];
+        
+        // 중복확인 함수
+        function confirmChk(){
+            // name이 id것들중 1번째 노드의 값
+            var id=document.getElementsByName("id")[0].value;
+            // tag 이름이 div인 것들 중 1번째 노드
+            var div=document.getElementsByTagName("div")[0];
+
+            // ids 배열에서 입력받은 id와 같은것이 있는지 확인
+            // 찾는 것이 있다면 index return / 같은 것이 없다면 -1 return
+            if(ids.indexOf(id)!=-1){
+                div.innerHTML="<b>아이디가 존재합니다.</b>";
+            }else{
+                // 사용할 수 있다면 확인 버튼이 나옴
+                // 문자열 => 문자 하나하나를 모은 배열
+                var userId="사용할 수 있는 아이디입니다."
+                        +"<input type='button' value='확인'"
+                        +"onclick='insertId(\""+id+"\")'>";
+                div.innerHTML=userId;          
+            }
+        }
+        
+        function insertId(id){
+            // opener 현재 열었던 창의 참조를 반환
+            opener.document.getElementsByName("id")[0].value=id;
+            opener.document.getElementsByName("pwd")[0].focus();    // 자동으로 커서가 위치하도록
+            close();
+        }
+
+        
+    </script>
+
+</head>
+<body>
+    
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id"/></td>
+		</tr>
+		<tr>
+            <!-- 열 합치기 -->
+			<td colspan="2"> 
+				<input type="button" value="중복확인" onclick="confirmChk()"/>
+				<input type="button" value="취소" onclick="self.close()"/>
+			</td>
+		</tr>
+	</table>
+	<div></div>
+
+</body>
+</html>

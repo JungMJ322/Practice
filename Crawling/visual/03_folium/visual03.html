@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_dfa733cbf4d7453f8ada0886c3a266a8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_dfa733cbf4d7453f8ada0886c3a266a8" ></div>
+        
+</body>
+<script>    
+    
+            var map_dfa733cbf4d7453f8ada0886c3a266a8 = L.map(
+                "map_dfa733cbf4d7453f8ada0886c3a266a8",
+                {
+                    center: [36.47960685470063, 127.13871970437835],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_43835ace0f55436187693998aa8f4ddb = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_dfa733cbf4d7453f8ada0886c3a266a8);
+        
+    
+            var marker_e47d2a5efc1b484aab555e24e730cf61 = L.marker(
+                [36.46815, 127.14274],
+                {}
+            ).addTo(map_dfa733cbf4d7453f8ada0886c3a266a8);
+        
+    
+        var popup_8b925a6232204a7682c026cb179aead6 = L.popup({"maxWidth": 100});
+
+        
+            var html_a8a811101faa465aab3a66a41896f63f = $(`<div id="html_a8a811101faa465aab3a66a41896f63f" style="width: 100.0%; height: 100.0%;">공주DT</div>`)[0];
+            popup_8b925a6232204a7682c026cb179aead6.setContent(html_a8a811101faa465aab3a66a41896f63f);
+        
+
+        marker_e47d2a5efc1b484aab555e24e730cf61.bindPopup(popup_8b925a6232204a7682c026cb179aead6)
+        ;
+
+        
+    
+    
+            var marker_e069eea36c574d96994c5d8ea8bc96f5 = L.marker(
+                [36.474648, 127.14003],
+                {}
+            ).addTo(map_dfa733cbf4d7453f8ada0886c3a266a8);
+        
+    
+        var popup_bc53d44daf4b41229717e7d343d72761 = L.popup({"maxWidth": 100});
+
+        
+            var html_91912eeefc234b4fa3359968cb52f8d1 = $(`<div id="html_91912eeefc234b4fa3359968cb52f8d1" style="width: 100.0%; height: 100.0%;">공주신관</div>`)[0];
+            popup_bc53d44daf4b41229717e7d343d72761.setContent(html_91912eeefc234b4fa3359968cb52f8d1);
+        
+
+        marker_e069eea36c574d96994c5d8ea8bc96f5.bindPopup(popup_bc53d44daf4b41229717e7d343d72761)
+        ;
+
+        
+    
+    
+            var marker_262cf6b3e0364920b7431d4461663523 = L.marker(
+                [36.36336, 127.2535628],
+                {}
+            ).addTo(map_dfa733cbf4d7453f8ada0886c3a266a8);
+        
+    
+        var popup_6c75c71f58864e009a065f9ad9af952f = L.popup({"maxWidth": 100});
+
+        
+            var html_a5fa8e56fcd944479378c2d2037d7ec3 = $(`<div id="html_a5fa8e56fcd944479378c2d2037d7ec3" style="width: 100.0%; height: 100.0%;">공주동학사DT</div>`)[0];
+            popup_6c75c71f58864e009a065f9ad9af952f.setContent(html_a5fa8e56fcd944479378c2d2037d7ec3);
+        
+
+        marker_262cf6b3e0364920b7431d4461663523.bindPopup(popup_6c75c71f58864e009a065f9ad9af952f)
+        ;
+
+        
+    
+</script>

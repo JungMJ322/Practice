@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+    <!-- src 지정한 script에는 아무것도 쓰지 않는다(쓰면 동작안함) -->
+    <script src='resources\js\jquery-3.6.0.min.js'></script>
+
+    <script>
+        /* 
+            jquery 기본 작성법!
+            -> selector 표현식
+            jQuery("selector").method();
+
+            jQuery라고 계속 사용하기 힘들어 '$'표시로 사용한다
+            $("selector").method
+
+            p Tag의 css에서 color속성을 red로
+            $("p").css("color", "red")
+
+            기능구현!!
+            onload=function(){
+
+            }
+
+            ->
+            $(function(){
+
+            });
+
+            $(document).ready(function(){
+
+            }};
+        */
+
+
+        $(function(){
+            // test-btn id를 가진 tag
+            $("#test-btn").click(function(){
+                alert("클릭했음");
+            });
+
+            $("img").click(function(){
+                $(this).hide();
+            });
+        });
+
+        function showImg(){
+            // 감춰진 그림을 보이게 하자.
+            $("img").show();
+        };
+
+        function resizeImg(){
+            // 100 100으로 변겨하자
+            // $("img").css("width", "100px").css("height", "100px");
+            // 위에것을 한번에 연결도 가능
+            $("img").css({"width": "100px", "height": "100px"});
+
+        };
+
+        function addImg(){
+            $("img").last().after("<img src='resources/imgs/img01.png'/>");
+        };
+
+        function toggleImg(){
+            // 보였다 안보였다 하자
+            $("img").fadeToggle();
+        };
+
+
+
+    </script>
+
+
+</head>
+<body>
+    <!-- library(javascript) == module(python)
+        한 기능을 수행하기 위해 모아둔 클래스나 메서드 등의 모음 
+        ununcompressed 는 가독성이 좋지만 공백이 많아 용량이 더 크다-->
+    <h1>JQuery : javascript library</h1>
+
+    <button id="test-btn">click me</button><br>
+    <button onclick="showImg()">이미지 보이기</button>
+    <button onclick="resizeImg()">이미지 축소</button>
+    <button onclick="addImg()">이미지 추가</button>
+    <button onclick="toggleImg()">이미지 숨기기/보이기</button>
+    <br><br>
+    <div>
+        <img src="resources/imgs/img01.png" alt="img01">
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main_menu{width: 300;}
+        .sub_menu1{cursor: pointer;}
+        .sub_menu2{display: none; cursor: pointer;}
+    </style>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            /*
+                hint!
+                1. b태그를 클릭했을 때
+                2. b태그 기준으로 보여져야(슬라이드) 되는 것들 생각
+                3. b태그 기준으로 숨겨져야(슬라이드) 되는 것들 생각
+            */
+            
+            // 1. class sub_menu1의 자식 b를 click했을 때
+            var num = [];
+            var num2 = 0;
+            $(".sub_menu1 > b").click(function(){
+
+                $(this).next().slideToggle();
+
+                for(var i=0; i<$(".sub_menu2").length; i++){
+                    if($(".sub_menu2").eq(i).css("display") == "block"){ 
+                        num.push(i);
+                    }
+                }
+
+                if(num.length != 2){
+
+                    for(var i=1; i<num.length; i++){
+                        if(num[0] == num[i]){
+                            $(".sub_menu2").eq(num[0]).slideUp()
+                            num.shift()
+                            num2 = num[0]
+                            num[0] = num[1]
+                            num[1] = num2
+
+                        }
+                    }          
+                }
+                
+
+                
+
+                console.log(num)
+
+
+
+                // if($(".sub_menu2").eq(0).css("display") == "block"){num = 0}
+                // if($(".sub_menu2").eq(1).css("display") == "block"){num = 1}
+                // if($(".sub_menu2").eq(2).css("display") == "block"){num = 2}
+                // if($(".sub_menu2").eq(3).css("display") == "block"){num = 3}
+
+                // if($(this).css("display") == "block"){
+                //         $(this).slideUp()
+                //     }
+
+                // 2. 이것(=>자식 b)의 다음을 slideToggle()해라
+                // $(this).next().slideToggle();
+                
+                // 3. 클릭한 요소의 부모의 형제들 중 ul을 찾아 없어지게
+                // siblings() 형제의 요소들
+                // $(this).parent().siblings().find("ul").slideUp();
+
+                // 2, 3번 합친것
+                // $(this).next().slideToggle().end().parent().siblings().find("ul").slideUp();
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <p>메뉴 만들기</p>
+    <ul type="square" class="main_menu">
+        <li class="sub_menu1"><b>(1)css선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>tage 선택</li>
+                <li>id 선택</li>
+                <li>class 선택</li>
+                <li>parent child 선택</li>
+                <li>parent &gt; child 선택</li>
+                <li>:nth-child 선택</li>
+                <li>:first-child 선택</li>
+                <li>:last-child 선택</li>
+            </ul>
+        </li>
+
+        <li class="sub_menu1">
+            <b>(2)속성 선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>[attr]</li>
+                <li>[attr=value]</li>
+                <li>[attr!=value]</li>
+            </ul>
+        </li>
+
+        <li class="sub_menu1">
+            <b>(3)폼 선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>input:type</li>
+            </ul>
+        </li>
+
+        <li class="sub_menu1">
+            <b>(4)사용자 정의</b>
+            <ul type="circle" class="sub_menu2">
+                <li>:eq</li>
+                <li>:first</li>
+                <li>:last</li>
+                <li>:even</li>
+                <li>:odd</li>
+                <li>:parent</li>
+            </ul>
+        </li>
+    </ul>
+
+    
+</body>
+</html>

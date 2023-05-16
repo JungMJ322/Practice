@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        #regist {
+            border: 1px solid black;
+            background: pink;
+			/* 좌상단 기준 */
+            position: absolute;
+            top: 200px;
+            left: 500px;
+			/* 공간을 차지하지 않고 보이지 않음 */
+            display: none;
+        }
+    </style>
+    
+    <!-- 
+        display : none;			//공간을 차지하지 않는다 (만들어지지 않은 상태)
+        visibility: hidden;		//공간을 차지하고, 보이지 않는다 (만들어져 있는 상태)
+     -->
+    
+    <script type="text/javascript">
+
+        function openWin() {
+            var url = "js13-window-popup.html";
+            var title = "myframe";
+            var prop = "top=200px,left=600px,width=500px,height=500px";
+			// url만 있으면 새 탭에서 열림
+			// url, , prop 있으면 popup창으로
+			// title(이름) => url document가 열릴 곳
+            window.open(url, title, prop);
+        }
+    
+        function registForm() {
+			// #regist를 보이도록
+            document.getElementById("regist").style.display = "block";
+            document.body.style.background = "gray";
+    
+            var btns = document.getElementsByName("btn");
+
+			// 객체일때 사용 가능, 객체 하나하나씩
+			// for each 문 향상된 for문 오른쪽에 있는 collecion에서 반복문에 하나씩 사용
+			// nodeList의 속성들 까지 볼수 있음
+            for ( var i in btns) {
+				console.log(i)
+				// 비활성화 상태로
+                btns[i].disabled = "disabled";
+            }
+        }
+    
+        function closeWin() {
+			// regist를 안보이도록
+            document.getElementById("regist").style.display = "none";
+            document.body.style.background = "white";
+    
+            var btns = document.getElementsByName("btn");
+            for ( var i in btns) {
+				// 활성화 상태로
+                btns[i].disabled = "";
+            }
+        }
+    
+        function idchk() {
+            alert("중복체크를 확인하세요");
+        }
+    
+        function idCheck() {
+            open("js13-window-id-check.html", "", "width=300px,height=300px");
+        }
+    </script>
+    
+    
+</head>
+<body>
+    
+    <h1>window객체</h1>
+	
+	<pre>
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+    
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<!-- 버튼을 누를때 openWin()함수 호출 -->
+		<button onclick="openWin()" name="btn">창열기</button>
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+
+    <!-- 회원가입폼 시작 -->
+	<div id="regist">
+		<form>
+			<table>
+				<!-- caption 주석 -->
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					<!-- 입력 타입이 text인데 입력창을 클릭하면 idchk()함수를 호출하고
+					읽기 전용이다(타이핑 할수 없음) -->
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly"/>
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<!-- password 타입 입력하면 '*'로 화면에 출력 
+						checked 커맨드나 컨트롤이 체크되어있는지의 여부 확인이라 하는데 password 타입에서 사용안함 -->
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 회원가입폼 종료 -->
+
+	<br/><br/><br/>
+	<!-- iframe 현제 HTML 안에 다른 HTML 삽입 -->
+	<!-- 기존 document와 iframe은 완전 다른 영역 -->
+	<!-- 최대한 사용 자제 -->
+	<iframe name="myframe"></iframe>
+
+
+</body>
+</html>

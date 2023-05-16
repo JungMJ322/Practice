@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type='text/javascript'>
+        function searchQS(){
+            // querySelector('css 선택자') -> Node 하나 반환
+            var doc = document.querySelector('#test99')
+            // console.log(doc)
+
+            // querySelectorAll('css 선택자') -> nodelist (선택자에 해당하는 Node의 하위 Node 전부 반환)
+            // 배열 [index]로 몇번째의 값을 가지고 올지 선택할 수 있다.
+            // 선택자가 무엇이든 넣어서 찾음
+            //var doc = document.querySelectorAll('#test')[0]
+            // console.log(doc)
+
+            // innerHTML 태그 안에있는 문자을 변경한다(tag속성의 id는 변하지 않는다)
+            doc.innerHTML = 'querySelectorAll(css 선택자)'
+        }
+
+        function searchID(){
+            // test라는 ID(고유값) 요소 하나를 가지고와라 문서에서
+            var doc = document.getElementById('test')
+            // console.log(doc)
+
+            doc.innerHTML = 'id 속성으로 탐색'
+            doc.style.color = 'red'
+        }
+
+        function searchName(){
+            // test02라는 Name을 가지고 있는 태그들을 NodeList로 return
+            var doc = document.getElementsByName('test02')
+            // console.log(doc)
+            
+            // name이 test02인 것들중 1번지에 있는 값을 변경
+            doc[1].value = 'name으로 탐색!!'
+        }
+
+        function searchTag(){
+            // p 태그를 찾을 것이다
+            var doc = document.getElementsByTagName('p')
+            doc[3].innerHTML = 'tag 이름으로 탐색했음!!'
+        }
+
+    </script>
+</head>
+<body>
+    <!-- DOM: Document Object Model -->
+    <p onclick='searchQS()'>DOM 탐색 메서드</p>
+
+    <p id='test' onclick='searchID()'>1. 엘리먼트의 id로 탐색: 엘리먼트 하나를 선택(중복 불가) - 반환: 값 하나(Node)</p>
+
+    <p onclick='searchName()'>2. 엘리먼트의 name으로 탐색: 엘리먼트를 여러 개 선택 - 반환: 배열(NodeList)<br>
+        <input type="test" name='test02' value=""><br>
+        <input type="test" name='test02' value=""><br>
+        <input type="test" name='test02' value=""><br>
+    </p>
+
+    <p onclick='searchTag()'>3. 엘리먼트의 태그 이름으로 탐색: 엘리먼트를 여러 개 선택 - 반환: 배열(NodeList)</p>
+
+</body>
+</html>

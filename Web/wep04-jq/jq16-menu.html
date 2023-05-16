@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{border: 2px solid red;}
+        #menu{background-color: skyblue; text-align: right;}
+        a{text-decoration: none; font-size: 20px;}
+        #menu div{display: inline-block; margin-right: 10px;}
+    </style>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            // 가독성 있게 보이기위해 '$변수명'으로 jQuery 객체임을 알려줌(강사님은 이렇게 씀)
+            var $box = $("<div>").addClass("box");
+            // wrap("요소1") => 앞의 selector를 요소1의 자식으로 만들어라
+            //               => 앞의 selector의 부모요소로 요소1이 되게 해라
+            $(".sub_menu:first").wrap($box);
+
+            // 특정 .sub_menu를 click했을 때 .sub_menu의 부모가 .box인 경우 .box를 제거 하고,
+            // chilk한 sub_menu(위에서 말한 특정 .sub_menu)의 부모로 .box를 만든다.
+            $(".sub_menu").click(function(){
+                $(".sub_menu").each(function(){
+                    if($(this).parent().is(".box")){
+                        $(this).unwrap(".box");
+                    }
+                });
+
+                $(this).wrap($box);
+            });
+
+            // a tag안에 span tag 생성
+            // $()을 찾아 이것의 자식요소들을 wrapIneer()로 포장해줘라
+            $("a").wrapInner("<span></span>");
+
+            // $()을 찾아 $()되어있는 모든것을 wrapAll()로 포장해라
+            // 다른 tag 자식으로 있는 것들도 한곳에 모아 포장한다(첫번째 $()에 있는 곳으로)
+            // $("a").wrapAll("<b></b>");
+        });
+
+    </script>
+
+</head>
+<body>
+    
+    <div id="menu">
+        <div class="sub_menu">
+            <a href="#"><span>국비지원</span></a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">훈련검색</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">기관검색</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">질문답변</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">과정후기</a>
+        </div>
+
+    </div>
+
+    <pre>1</pre>
+    <pre>2</pre>
+    <pre>3</pre>
+
+</body>
+</html>

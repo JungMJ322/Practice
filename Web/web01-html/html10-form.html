@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--요청해주는애(name값과 value값)-->
+    <form action="html-form-res.html" method="post">
+        <fieldset>
+            <legend>회원가입</legend>
+
+            <p>ID: <input type="text" name="id"></p>
+            <p>PW: <input type="password" name="pw"></p>
+            <p>Email 수신 여부<br>
+                <!--라디오 버튼; 이름이 같은애들 중 1개만 체크 가능-->
+                <input type="radio" name="rdo" value="y">y
+                <input type="radio" name="rdo" value="n">n
+            </p>
+            <p>관심분야<br>
+                <!--여러가지 선택 가능하고 name=value형태로 -->
+                <input type="checkbox" name="web" value="web">WEB<br>
+                <input type="checkbox" name="ai" value="ai">Data Science<br>
+                <input type="checkbox" name="engi" value="engi">Data Engineer
+            </p>
+            <p>하고싶은 말
+                <!--                 가로      세로-->
+                <textarea name="etc" cols="60" rows="10"></textarea>
+            </p>
+            <p>
+
+                <input type="button" value="그냥 버튼"><br>
+                <!--form tag안에서 입력한 내용 reset-->
+                <input type="reset" value="취소"><br>
+                <!--form tag안에서 입력한 내용에서 name=value값 전달
+                    action=""속성에 지정한 곳으로 reset-->
+                <input type="submit" value="전송">
+            </p>
+        </fieldset>
+    </form>
+
+
+
+
+</body>
+</html>

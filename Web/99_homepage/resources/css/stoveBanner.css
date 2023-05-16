@@ -1,0 +1,522 @@
+.upBox1 h2, .upBox2 h2, .upBox3 h2, #youMovie h2, #gameGuide h2, 
+#contents h2, .LAMenuR1, .LAMenuR2, #subNotice h2, 
+#exchange1, #exchange2, #exchange3, #glass{
+    background: url('../img/sprite.png') no-repeat;
+}
+/* stove Menu
+    제일 외각 div에 relative를 주어 기준
+    그다음꺼에 크지 지정, min-width로 일정크기 이상일때는 유동적으로, 이하일때 고정크기
+     */
+#stove{
+    position: relative;
+    font-weight: bold;
+    border: 1px solid blue;
+}
+#stoveInner{
+    width: 100%;
+    height: 68px;
+    min-width: 1350px;
+    display: table;
+    background-color: white;
+}
+#stoIcon{
+    display: table-cell;
+    vertical-align: middle;
+    width: 110px;
+    padding-left: 20px;
+}
+#stoIcon > img{
+    width: 70px;
+    height: 16px;
+}
+#stoLeft{
+    display: table-cell;
+    vertical-align: middle;
+}
+.stoMenu{
+    float: left;
+    padding: 0 15px;
+}
+.stoMenu a{
+    text-decoration: none;
+    color: inherit;
+}
+#stoRight{
+    display: table-cell;
+    padding-right: 24px;
+    justify-content: flex-end;
+    vertical-align: middle;
+}
+.stoMenuR{
+    float: right;
+    margin: 0px 6px;
+}
+
+/* 고정 게임 메뉴 */
+#pageBody{
+    height: auto;
+    position: relative;
+    min-width: 1350px;
+}
+#header{
+    position: sticky;
+    top: 0px; 
+    font-weight: bold;
+    z-index: 100;
+}
+#fixdMenu{ 
+    width: 100%;
+    min-width: 1350px;
+    height: 86px;
+    background-color: black;
+    color: white;
+    position: absolute;
+}
+#LArk{
+    position:absolute;
+    display: flex;
+    align-items: center;
+    height: 86px;
+}
+#LArk a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 21px;;
+}
+#LArk div{
+    padding: 0px 15px;
+}
+
+#LArkR{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+}
+#LArkR img{
+    width: 151px;
+    height: 86px;
+}
+.LAMenuR1{
+    width: 50px;
+    height: 12px;
+    background-position: -951px -970px;
+}
+.LAMenuR2{
+    width: 71px;
+    height: 30px;
+    background-position: -456px -1000px;
+}
+.LAMenuR1, .LAMenuR2{
+    margin: 0px 5px;
+}
+
+/* ========body======== */
+#mainText{
+    position:relative;
+    overflow: hidden;
+}
+#mainBg{
+    position: relative;
+    background-color: white;
+    background-image: url("../img/bg_index_issue.jpg");
+    background-repeat: no-repeat;
+    left: 50%;
+
+    width: 2560px;
+    height: 992px;
+    margin-left: -1280px;
+}
+#readMore > a{
+    position: absolute;
+    top: 318px;
+    left: 50%;
+    width: 174px;
+    height: 45px;
+    margin-left: -87px;
+    
+}
+#mainMenu{
+    position: absolute;
+    top: 395px;
+    left: 50%;
+    width: 890px;
+    height: 500px;
+    margin-left: -630px;
+    background: url('../img/main_artist.jpg');
+}
+#subMenu{
+    position: absolute;
+    top: 395px;
+    left: 50%;
+    width: 358px;
+    height: 500px;
+    margin-left: 271px;
+}
+#subPic{
+    height: 280px;
+    background: url("../img/ninabe.jpg");
+}
+#subNotice{
+    height: 160px;
+    padding: 28px 20px;
+    background: rgba(28,30,36,.9);
+    display: block;
+    
+}
+#subNotice h2{
+    width: 88px;
+    height: 23px;
+    background-position: -615px -970px;
+}
+#subNotice ul{
+    width: 280px;
+    margin-left: 20px;
+}
+#subNotice ul li{
+    margin: 15px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #c2c2c2;
+}
+#subNotice ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+#serchBar{
+    position: absolute;
+    top: 953px;
+    left: 50%;
+    width: 1264px;
+    height: 74px;
+    margin-left: -632px;
+    z-index: 1;
+}
+
+/* ==========Guide============= */
+#upGuide{
+    position: relative;
+    width: 1264px;
+    height: 436px; 
+    background-color: white;
+    margin:0 auto;
+    padding-top: 76px;
+    display: flex;
+}
+.upBox1, .upBox2, .upBox3{
+    width: 435px;
+    height: 316px;
+    margin-right: 20px;
+    position: relative;
+}
+.upBox1 h2{
+    background-position: -435px -970px;
+	width: 101px;
+    height: 27px;
+    margin-bottom: 20px;
+}
+.upBox2 h2{
+    width: 137px;
+    height: 27px;
+    background-position: -325px -940px;
+    margin-bottom: 20px;
+}
+.upBox3 h2{
+    width: 133px;
+    height: 27px;
+    background-position: -463px -940px;
+    margin-bottom: 10px;
+}
+.upBox3 img{
+    margin-top: 10px;
+}
+.exchange{
+    width: 100%;
+    height: 118px;
+    text-align: center;
+    position:absolute;
+    bottom: 0px;
+}
+.exchange > div{
+    display: flex;
+    position: relative;
+    padding-left: 170px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #888;
+    text-align: left;
+}
+.exchange > div > a{
+    display: flex;
+    padding: 30px 0 34px 27px;
+    text-decoration: none;
+    color: inherit;
+}
+#exchange1{
+    width: 57px;
+    height: 57px;
+    background-position: -683px -1035px;
+}
+#exchange2{
+    width: 57px;
+    height: 57px;
+    background-position: -741px -1035px;
+}
+#exchange3{
+    width: 57px;
+    height: 57px;
+    background-position: -799px -1035px;
+}
+.bigFont{
+    font-size: 19px;
+    font-weight: 700;
+    font-style: normal;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* ==============you=============== */
+#youMovie{
+    position: relative;
+    width: 100%;
+    height: 786px;
+    background-color: #e9e9e9;
+}
+#youMovie h2{
+    width: 110px;
+    height: 28px;
+    background-position: -324px -970px;
+    margin: 50px 0px 20px -630px;
+    position: absolute;
+    left: 50%;
+}
+#youInner{
+    width: 1290px;
+    height: 610px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    margin-left: -634px;
+}
+#youMovie > div > div{
+    width: 309px;
+    height: 292px;
+    margin-right: 10px;
+    background-color: white;
+}
+#youMovie img{
+    width: 309px;
+    height: 175px;
+}
+#youMovie a{
+    text-decoration: none;
+    color: inherit;
+}
+#youMovie a > div{
+    padding: 20px;
+    position: relative;
+}
+#youMovie p{
+    font-size: 16px;
+    font-weight: 900;
+    color: #222;
+}
+#youMovie span{
+    font-size: 14px;
+    font-weight: bold;
+    color: #8045dd;
+    margin-bottom: 12px;
+    position: absolute;
+    top: 80px;
+}
+
+/* =================Guide================ */
+#gameGuide{
+    position: relative;
+    width: 100%;
+    height: 492px;
+    background-color: white;
+}
+#gameGuide h2{
+    width: 133px;
+    height: 28px;
+    background-position: -191px -940px;
+    margin: 30px 0px 20px -630px;
+    position: absolute;
+    left: 50%;
+}
+#ovalTag{
+    width: 1260px;
+    height: 38px;
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    margin-left: -634px;
+}
+#ovalTag > a{
+    height: 36px;
+    margin-left: 10px;
+    padding: 6px 12px;
+    border: 1px solid #c6c6c6;
+    border-radius: 19px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    line-height: 36px;
+    text-decoration: none;
+
+}
+#textGui{
+    position: absolute;
+    top: 78px;
+    right: 50%;
+    margin-right: -660px;
+}
+#gameGuide input{
+    width: 350px;
+    height: 50px;
+    padding-left: 18px;
+    font-size: 16px;
+    color: #555;
+    box-sizing: border-box;
+    border: 2px solid #dddfe3; 
+}
+#glass{
+    width: 22px;
+    height: 22px;
+    background-position: -138px -1345px;
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+    right: 16px;
+    z-index: 2;
+}
+#guideInner{
+    width: 1290px;
+    height: 276px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 50%;
+    bottom: 65px;
+    margin-left: -634px;
+}
+#guideInner > div{
+    width: 309px;
+    height: 276px;
+    margin-right: 10px;
+}
+
+/* ===============last==================== */
+#lastBox{
+    position: relative;
+    width: 100%;
+    height: 520px;
+    display: flex;
+}
+#contents{
+    overflow: hidden;
+    display: block;
+    position: relative;
+    width: 48%;
+    min-width: 620px;
+    padding: 55px 42px 0 0;
+    height: 521px;
+    background: url('../img/bg_contents.jpg') no-repeat 100% 0;
+}
+#contents h2{
+    width: 77px;
+    height: 27px;
+    background-position: -537px -970px;
+    position: absolute;
+    top: 50px;
+    right: 516px;
+
+}
+#contentsInner{
+    display: flex;
+    flex-wrap: wrap;
+    width: 566px;
+    margin-left: 60px;
+    position: absolute;
+    top: 100px;
+    right: 30px;
+}
+#contentsInner > div{
+    width: 175px;
+    height: 115px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#classIntroduction{
+    height: 521px;
+    width: 50%;
+}
+#classBg{
+    width: 50%;
+    min-width: 885px;
+    height: 571px;
+    background: url('../img/bg_class_artist.jpg');
+    background-position-y: -47px;
+    position:absolute;
+    top: -30px;
+}
+
+/* =============footer============ */
+footer{
+    position: relative;
+    width: 100%;
+    min-width: 1290px;
+    height: 250px;
+    background-color: #212226;
+}
+#smileGate{
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    margin-left: -635px;
+}
+#smileGate > img{
+    margin-right: 25px;
+}
+#introduction{
+    width: 880px;
+    display: block;
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    margin-left: -255px;
+    color: white;
+}
+#introduction ul{
+    overflow: hidden;
+}
+#introduction li{
+    list-style: none;
+    float: left;
+}
+#introduction a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 14px;
+    padding: 6px 10px;
+}
+#introduction > div{
+    padding: 6px 10px;
+}
+#introduction span{
+    width: 877px;
+    margin: 0 10px 13px 0;
+    font-size: 12px;
+    color: #949596;
+}
+#introduction p{
+    width: 877px;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+

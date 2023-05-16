@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        #colorbox{
+            width: 320px;
+            height: 320px;
+            position: relative;
+        }
+        #red, #green, #blue, #magenta{
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            position: absolute;
+        }
+        #green{
+            left: 160px;
+        }
+        #blue{
+            top: 160px;
+        }
+        #magenta{
+            left: 160px;
+            top: 160px;
+        }
+    </style>
+
+    <script>
+        function selectColor(){
+            var chks = document.getElementsByName('chk')
+            
+            for(var i=0; i<chks.length; i++){
+                // console.log(chks[i].checked)
+
+                // chks[i].checked -> 체크박스에 체크한 것이 true가 됨
+                // 체크박스의 checked 값은 true/false 이다
+                if(chks[i].checked){
+                    document.getElementById(chks[i].value).style.backgroundColor = chks[i].value;
+                } else{
+                    // 일반적으로 null을 사용할 때 메소드(.split 등)를 사용하면 error 발생할 수 있다.
+                    // 값이 없는데 메소드를 사용하니
+                    document.getElementById(chks[i].value).style.backgroundColor = ''
+                }
+            }
+        }
+
+        function allCheck(bool){
+            var chks = document.getElementsByName('chk')
+
+            for(var i=0; i<chks.length; i++){
+                chks[i].checked = bool
+            }
+            // 전체선택 되어있는 상태에서 빨초파마 체크박스 하나 빠지막 전체선택 체크 빠지고
+            // 빨초파마 체크박스를 모두 체크하면 전체선택 체크박스에 자동으로 체크 되도록
+            // 검사안하는 숙제
+        }
+
+        function clearDiv(){
+            allCheck(false)
+
+            // #colorbox의 자식요소인 div Tag를 찾아라
+            var colorBox = document.querySelectorAll('#colorbox > div')
+            for(var i=0; i<colorbox.length; i++){
+                colorBox[i].style.backgroundColor = ''
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+    
+
+    <div id='colorbox'>
+        <div id='red'>red</div>
+        <div id='green'>green</div>
+        <div id='blue'>blue</div>
+        <div id='magenta'>magenta</div>
+
+    </div>
+
+    <div id='base'>
+        <form>
+            <!-- this(나)/ input Tag에 체크되어 있는 상태 확인 -->
+            <!-- html을 javascript로 변경하려면 document를 object로 변경해야한다. -->
+            <input type="checkbox" name='all' onclick='allCheck(this.checked)'>전체 선택<br>
+
+            <input type="checkbox" name='chk' value='red'>빨강<br>
+            <input type="checkbox" name='chk' value='green'>초록<br>
+            <input type="checkbox" name='chk' value='blue'>파랑<br>
+            <input type="checkbox" name='chk' value='magenta'>진홍<br>
+
+            <input type="button" value='선택' onclick='selectColor()'>
+            <input type="button" value='취소' onclick='clearDiv()'>
+
+        </form>
+    </div>
+</body>
+</html>

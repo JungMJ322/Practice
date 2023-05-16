@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            // div안에 모든 하위Tag들 중 b를 찾음
+            $("div").find("b").css({"font-size": "30px", "color": "red"});
+
+            // div 자식들중 id가 chd인것을 찾음
+            $("div").children("#chd").text("2.children()");
+
+            // 모든 b의 부모태그를 가지고 온다
+            // => 내가 원하지 않는 tag를 가지고 올수도 있음 그래서 "p b"나 "p > b"처럼 명확하게 해야함
+            $("p > b").parent().css("background-color", "hotpink");
+
+            // parents 부모태그 중 하나 선택
+            $("p > b").parents("div").css("background-color", "yellow");
+
+            // 첫번째 p tag의 다음 tag => 2번째 p tag만
+            $("p").eq(0).next().css("color", "blue");
+
+
+        });
+
+    </script>
+
+
+</head>
+<body>
+    
+    <pre>
+        <b>find("selector): 선택한 엥리먼트의 자손들 중에 탐색</b>
+        <b>children("selector): 선택한 엘리먼트의 자식들 중에 탐색</b>
+        <b>parent() / parents("selector"): 선택한 엘리먼트이 부모 / 조상 탐색</b>
+        <b>next("selector"): 선택한 엘리먼트 다음에 따라오는 요소 탐색</b>
+    </pre>
+
+    <div>
+        <p><b>1</b></p>
+        <p id="chd">2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+
+
+</body>
+</html>

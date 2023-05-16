@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function tableVal(){
+            // forms 폼 태그'들'을 가지고옴
+            var doc = document.forms[0]
+            // 위의 doc(첫번째 폼태그)의 이름의 값
+            // 문자열 배열
+            var vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value]
+            // alert(typeof(doc.id.value))      => string
+            // 유효성 검사
+            // 유효한 값이 없다면 경고가 나오게
+            // 형식에 맞지 않는 값이 아니라면 경고창 나오는거
+            for(var i=0; i<vals.length; i++){
+                if(vals[i] == null || vals[i] == "" || vals[i] == undefined){
+                    alert('제대로 입력했는지 다시 한번 확인해 주세요!')
+                    return;
+                }
+            }
+
+            document.getElementById("addtr").appendChild(createRow(vals));
+
+        }
+
+        function createRow(vals){
+            // tr tag 생성
+            var tr = document.createElement("tr")
+
+            // tr tag안에 td tag 생성하고 textContent(<>'textContent'<>)에 vals[i] 넣기
+            for(var i=0; i<vals.length; i++){
+                // td tag 생성
+                var td = document.createElement('td')
+                td.textContent = vals[i]
+                // tr의 자식으로 td 넣기
+                tr.appendChild(td)
+
+            }
+
+            var deleteTd = document.createElement("td")
+            // this => input tag(자기 자신의 태그)
+            deleteTd.innerHTML = "<input type='button' value='삭제' onclick='delRow(this)'>"
+            tr.appendChild(deleteTd)
+
+            /*
+                <tr>안에 td 5개 들어가 있음
+                    <td>id값</td>
+                    <td>pw값</td>
+                    <td>addr값</td>
+                    <td>phone값</td>
+                    <td><input type='button' value='삭제' onclick='delRow(this)'></td>
+                </tr>
+            */
+
+            return tr;
+        }
+
+        function delRow(ele){
+            /*
+                <tr>안에 td 5개 들어가 있음
+                    <td>id값</td>
+                    <td>pw값</td>
+                    <td>addr값</td>
+                    <td>phone값</td>
+                    <td><input type='button' value='삭제' onclick='delRow(this)'></td>
+                </tr>
+
+                파라메타로 받은 ele은 input요소임
+                삭제하고 싶은 tr tag는 input의 부모(td)의 부모 태그(tr)다
+            */
+            
+            var delTr = ele.parentNode.parentNode;
+            var tbody = document.getElementById('addtr')
+            tbody.removeChild(delTr)
+        }
+
+        function deleteAll(){
+            var tbody = document.getElementById('addtr')
+
+            // hasChildNodes 자식노드를 가지고 있으면 true / 없으면 false
+            while(tbody.hasChildNodes())
+            // lastChild 마지막 자식 노드
+            tbody.removeChild(tbody.lastChild)
+        }
+    </script>
+
+</head>
+<body>
+    <form>
+        <table id='intable'>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name='id'></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="text" name='pw'></td>
+            </tr>
+            <tr>
+                <td>주소</td>
+                <td><input type="text" name='addr'></td>
+            </tr>
+            <tr>
+                <td>전화번호</td>
+                <td><input type="text" name='phone'></td>
+            </tr>
+        </table>
+        <input type="button" value='추가' onclick="tableVal()">
+        <input type="button" value="삭제" onclick="deleteAll()">
+    </form>
+
+    <div id="addtable">
+        <table border="1" id="ctb">
+            <col width="100px">
+            <col width="100px">
+            <col width="300px">
+            <col width="200px">
+            <col width="100px">
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id='addtr'></tbody>
+        </table>
+
+    </div>
+
+
+
+</body>
+</html>

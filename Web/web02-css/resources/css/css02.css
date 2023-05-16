@@ -1,0 +1,67 @@
+/* 타입 */
+pre{
+    text-align: center;
+}
+
+/* id */
+#s-id01{
+    color:hotpink;
+}
+#s-id02{
+    color: darkred;
+}
+
+/* class 는 .
+class는 같은 여러개의  */
+.s-cls01{
+    background-color: black;
+    color: white;
+}
+
+
+/* 전체 */
+*{
+    text-align: right;
+}
+
+/* 자식 */
+#atc > p{
+    color: yellowgreen
+}
+
+/* 인접 */
+/*스판 태그 다음이 pre 태그 이면*/
+span + pre{
+    background-color: cornflowerblue;
+}
+
+/* 하위 */
+#atc02 span{
+    color: chocolate;
+}
+
+/* 속성 */
+p[title]{
+    background-color: gray;
+}
+
+/* 가상 클래스 선택자 */
+a:link{     /*방문 기록이 있는 곳*/
+    color: green;
+    font-size: 20pt;
+}
+a:visited{  /*방문기록이 없는곳*/
+    color: gold
+}
+a:hover{    /*마우스가 올라간데*/
+    background-color: black;
+    color: white;
+}
+a:active{   /*누르고 있는경우*/
+    background-color: yellow;
+    color: tomato;
+}
+input:checked{  /*입력했을 경우 스타일*/
+    width: 100px;
+    height: 100px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type='text/javascript'>
+        function numberObj(){
+            // literal: 순수한 값
+            var num01 = 3
+            //alert(num01 + ':' + typeof(num01))
+
+            // object
+            var num02 = new Number(3);
+            //alert(num02 + ':' + typeof(num02))
+
+            // 문자열 숫자를 정수형으로 변환
+            //alert(parseInt('1') + 1);
+
+            // NaN: Not a Number
+            //alert(parseInt('a') + 1);
+
+            var prop = prompt('숫자만 입력해 주세요')
+            // is~~ 판별 bool return
+            // has~~ 안에 포함하고 있는지 bool return
+            // to~~ ~~으로 변경
+            // 일반적으로 위처럼 해석하는 것이맞음
+            // prompt에 아무것도 입력안하고 확인하면 else문 처리된다
+            if(isNaN(prop)){
+                alert('숫자가 아닙니다')
+            } else{
+                alert('숫자가 맞습니다')
+            }
+
+        }
+
+        function randomNum(){
+            // Math.random(): 0 <= x < 1 값을 랜덤하게 return
+            // Math.floor(): 소수점 버림
+            // Math.round(): 반올림
+            // Math.ceil(): 올림
+
+            // 0 ~ 100까지 랜덤 생성하고 싶음
+            var hundred = Math.floor(Math.random()*101)
+
+            // 10 ~ 100전 까지
+            var min = 10
+            var max = 100
+            var ran = Math.floor(Math.random() * (max-min) + min)
+            // alert(ran)
+
+            // 1 ~ 46(1 <= x < 46)
+            var lotto = Math.floor(Math.random() * 45 + 1)
+            alert(lotto)
+            // 로또 생성기 만들기 함 해봐라
+        }
+
+        function randomBG(){
+            // style 색상 표현식: rgb(256, 256, 256)
+            var rum = function(){
+                return Math.floor(Math.random() * 256)
+            }
+            document.body.style.backgroundColor = 'rgb(' + rum() + ',' + rum() + ',' + rum() + ')'
+        }
+
+
+    </script>
+</head>
+<body>
+    
+    <h1>숫자</h1>
+
+    <button onclick='numberObj()'>숫자</button><br>
+    <button onclick='randomNum()'>난수</button><br>
+    <button onclick='randomBG()'>배경색 변환</button><br>
+    <button onclick='randomCircle()'>랜덤 원 그리기</button>
+    <button onclick='circleArea()'>원의 넓이 / 둘레</button><br>
+    원의 넓이 : <span id='area'></span><br>
+    원의 둘레 : <span id='len'></span><br>
+    <br><br><br><br><br>
+    <style>
+        #circle{
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+    <div id='circle'></div>
+    <script>
+        function randomCircle(){
+            var rnum = Math.floor(Math.random() * 200)
+            var circle = document.getElementById('circle')
+
+            circle.style.width = rnum + 'px'
+            circle.style.height = rnum + 'px'
+
+            circle.style.borderRadius = Math.floor(rnum/2) + 'px'
+            circle.style.display = 'block'
+        }
+
+        function circleArea(){
+            // Math.PI: 원주율 return
+            // 문서 -> Id가 circle인 Tag에 '.style.width'의 값/ 을 circleWidth에 정의
+            var circleWidth = document.getElementById('circle').style.width
+
+            // var cW = ''
+            // circleWidth의 값 숫자px에서 숫자만 가지고오기
+            // for(i=0; i<circleWidth.length; i++){
+            //     if(isNaN(circleWidth[i])){
+            //         break
+            //     } else{
+            //         cW += circleWidth[i]
+            //     }
+            // }
+            // parseInt(): int값만 return
+            // alert(parseInt(circleWidth))
+            var r2 = circleWidth.substring(0, circleWidth.length-2)
+            var r = Math.floor(r2/2)
+            
+            
+            // 원의 넓이: pi r r(pi r^2)
+            var area = Math.floor(Math.PI * Math.pow(r, 2))
+            document.getElementById('area').innerHTML = area
+
+            // 원의 둘레: 2 pi r
+            var len = Math.floor(Math.PI * 2 * r)
+            document.getElementById('len').innerHTML = len
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            // submit event가 발생했을 때(type이 submit인 input 버튼을 눌렀을 때)
+            $("#signal").submit(function(){
+                if($(".infobox").val() == null || $(".infobox").val() ==""){
+                    $(".error").show()
+                    return false;
+                }
+            });
+
+            $("#confirm").click(function(){
+                $("#result").empty();
+
+                var total = 0;
+                // checkbox 중 checked 되어있는 요소들을 가지고 와서
+                // .each()를 사용하여 해당 요소들의 가격을 가져오옴
+                // input tag들 중에 name속성이 chk인 Tag들 중 checked 되어있는 checkbox만
+                // each() => python에 map()같은 
+                $("input[name=chk]:checked").each(function(i){
+                    // console.log(i);
+                    // var chk = $(this);
+
+                    // .eq(index) $("tag").eq(index) tag의 인덱스
+                    var chk = $("input[name=chk]:checked").eq(i);
+                    //console.log(chk);
+
+                    // .next()는 옆에있는 Tag를 찾아온다(input tag 옆에 b tag)
+                    var book = chk.next().text();
+                    var price = chk.val();
+                    $("#result").append(book + " : " + price + "<br/>");
+                    
+                    // 전부 문자열로 되어있기 때문에 str을 int로 변경해 주어야 한다
+                    total += parseInt(price);
+                });
+
+                
+                $("#result").append(total);
+
+            });
+
+            // 숙제: 모두 선택되어있으면 name이 all인 체크박스도 체크
+            // 하나라도 체크 해제되면 name이 all인 체크박스 체크 해제
+            $("input[name=chk]").click(function(){
+                /*
+                var chks = $("input[name=chk]");
+                var allChk = $("input[name=all]");
+                var andChk = true;
+
+                for(var i=0; i<chks.length; i++){
+                    andChk = andChk && chks.eq(i).prop("checked");
+                }
+                allChk.eq(0).prop("checked", andChk);
+                */
+
+                $("input[name=chk]").click(function(){
+                    // name이 chk인 checkbox갯수와 checked된 checkbox 갯수가 같으면
+                    // => 모두 체크되어 있다면
+                    if($("input[name=chk]").length == $("input[name=chk]:checked").length){
+                        $("input[name=all]").prop("checked", true);
+                    } else{
+                        $("input[name=all]").prop("checked", false);
+                    }
+                });
+                
+            });
+
+        });
+
+        // 숙제
+        function allChk(bool){
+            /*
+            var chks = $("input[name=chk]");
+
+            for(var i=0; i<chks.length; i++){
+                chks.eq(i).prop("checked", bool);
+            }
+            */
+
+            //  each => 가지고온 NodeList 만큼 반복
+            // input tag에 name이 chk인 nodeList의 갯수만큼 반복
+            // $(this) => $("input[name=chk")가 List로 되어있는데 그 요소 하나하나를 this에
+            // prop을 사용해 "checked" 속성을 입력하는 파라메타 bool로 변경
+            // name이 all인 checkbox가 체크되면 나머지 checkbox도 전부 checked
+            $("input[name=chk]").each(function(){
+                $(this).prop("checked", bool)
+            })
+        }
+
+       
+        
+    </script>
+
+</head>
+<body>
+    
+    <form id='signal'>
+        <div>
+            <span class="label">User Id</span>
+            <input type="text" class="infobox" name="userid">
+            <span class="error" hidden="" style="color: red;">반드시 입력하세요!!</span>
+        </div>
+        <input type="submit" class="submit" value="입력">
+    </form>
+
+    <hr/>
+
+    <fieldset style="width: 300px;">
+        <legend>체크 여부 확인</legend>
+
+        <input type="checkbox" name="all" onclick="allChk(this.checked)">전체선택<br>
+        <input type="checkbox" name="chk" value="20000"><b>python</b><br>
+        <input type="checkbox" name="chk" value="25000"><b>pandas</b><br>
+        <input type="checkbox" name="chk" value="30000"><b>django</b><br>
+
+        <input type="button" id="confirm" value="확인"><br>
+
+        <span>선택한 책 가격</span>
+        <div id="result"></div>
+
+    </fieldset>
+
+
+</body>
+</html>

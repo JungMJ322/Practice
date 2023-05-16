@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function func01(){
+            alert('함수의 이름이 있습니다.');
+        }
+
+        var func02 = function(){               // function(){} 함수가 값으로 사용되었다.
+            alert('함수의 이름이 없어요...');
+        } 
+
+        // alert(func02)
+
+        function func03(){
+            // function test(){
+            //     alert('내부함수');
+            // }
+            // test();
+            // 함수형태의 값 '(function(){})'을 '(function(){})()'로 실행
+            (function(){
+                alert('즉시 실행 함수');
+            })();
+            
+        }
+
+
+        function literalPrn(literal){
+            literal('안녕하세요. 함수 형태의 값 입니다.');
+
+        }
+        function func04(){
+            // literalPrn 함수를 호출 파라메터(literal)로 'function(msg){};'(<- argument 아규먼트라고 함)을 함수에 전달
+            // function의 파라메터 msg가 literalPrn함수의 literal(argument)의 argument를 문자열로 받아 alert메소드로
+            literalPrn(function(msg){alert(msg);});
+        }
+        
+        // 클로저 스코프이야기도 해야함
+        function closureFunc(val){
+            var suffix = '님, 안녕하세요~';
+            function innerFunc(){
+                // 내부함수 innerFunc()에서 외부 함수 closureFunc()의 변수를 가져다 사용하는 것을 클로져라 함
+                // 외부함수 val, suffix를 내부함수에서 사용
+                alert(val + suffix + '잘 부탁 드립니다.');
+            }
+            // alert(innerFunc)
+            // 함수 innerfunc 값({alert(val + suffix + '잘 부탁 드립니다.');}을 return 
+            return innerFunc;
+        }
+        var closureTest01 = closureFunc('멀캠');
+        
+        /* body에서 closureTest02('멀티캠퍼스'[== val])호출, 함수 내부에서 closureFunc(val)호출,
+            cF()함수에서 innerfunc의 형태{alert(val[=='멀티캠퍼스'] + suffix + '잘 부탁 드립니다.');}를 return
+            closureTest02()에서 {alert(val[=='멀티캠퍼스'] + suffix + '잘 부탁 드립니다.');}()의 형태로되고,
+            ()로 실행시켰으니 alert 메소드 실행되어 문구가 출력
+             */
+        function closureTest02(val){
+            closureFunc(val)()
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+    <h1>function = 기능</h1>
+    <h2>함수의 종류</h2>
+    <p onclick='func01();'>명시적 함수</p>
+    <p onclick='func02();'>익명 함수</p>
+    <p onclick='func03();'>즉시 실행 함수</p>
+    <p onclick='func04();'>함수 리터럴</p>
+    <p onclick='closureTest01()'>클로저: 외부함수에 접근 가능(변수 등)</p>
+    <p onclick='closureTest02("멀티캠퍼스")'>연습</p>
+
+
+</body>
+</html>

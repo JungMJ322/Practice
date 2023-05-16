@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{border: 1px solid red;}
+    </style>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            var cnt = 0
+            $("button:eq(0)").click(function(){
+                $("#base").after("<div>새로운 엘리먼트(after)" + (++cnt) + "</div>")
+            });
+
+            $("button:eq(1)").click(function(){
+                $("<div>새로운 엘리먼트(insertAfter)" + (++cnt) + "</div>").insertAfter("#base")
+                
+            });
+
+            $("button:eq(2)").click(function(){
+                // target이 앞
+                // function 사용 가능
+                $("#base").before("<div>새로운 엘리먼트(before)" + (++cnt) + "</div>")
+            });
+
+            $("button:eq(3)").click(function(){
+                // target이 뒤
+                // function 사용 불가능
+                // target이 뒤에 있으면 앞에 있는 함수가 언제 실행될지 몰라 실행 안됨
+                $("<div>새로운 엘리먼트(insertBefore)" + (++cnt) + "</div>").insertBefore("#base")
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+    <button>after()</button>
+    <button>insertAfter()</button>
+    <button>before()</button>
+    <button>insertBefore()</button>
+
+    <div id="base">
+        <p>외부 삽입</p>
+    </div>
+
+
+</body>
+</html>

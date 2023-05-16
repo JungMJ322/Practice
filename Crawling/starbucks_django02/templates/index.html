@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            $.ajax({
+                url: 'get_sido/',
+                dataType: 'json',
+                success: function(msg){
+                    msgKeys = Object.keys(msg)
+
+                    var $sido = $("#sido")
+                    for( var i=0; i<msgKeys.length; i++){
+                        $sido.append($("<option>").val(msgKeys[i]).text(msg[msgKeys[i]]))
+                    }
+                }
+            });
+
+            $("#sido").change(function(){
+                var sido = $(this).val();
+                if (sido == '17'){
+                    getStore('17')
+                } else{
+                    $.ajax({
+                        url: 'get_gugun/',
+                        data: {'sido_code': sido},
+                        dataType: 'json',
+                        success: function(msg){
+                            console.log(msg)
+                            msgKeys = Object.keys(msg)
+                            $gugun = $("<select>").prop('id', 'gugun').append($("<option>").val(0).text('구군선택'))
+
+                            for(var i=0; i<msgKeys.length; i++){
+                                $gugun.append($('<option>').val(msgKeys[i]).text(msg[msgKeys[i]]))
+                            }
+                            $('#wrapper').append($gugun)
+                        }
+                    });
+                }
+            });
+
+            // 아직 #'gugun'이 없어서 / sido를 change한 후 gugun이 만들어짐
+            $("#gugun").change(function(){});
+
+            // #wrapper를 누를때(자식을 누를때도 동작) change동작할 때 실행
+            $("#wrapper").on('change', "#gugun", function(){
+                code = $(this).val();
+                getStore(code);
+            });
+
+        });
+
+        function getStore(code){
+            $.ajax({
+                url: 'get_store/',
+                data: {'code': code},
+                dataType: 'json',
+                success: function(msg){
+                    stores = msg.store_list
+                    var $table = $("#result")
+
+                    for(var i=0; i<1; i++){
+                        var head_text = Object.keys(stores[i])
+                        var $tr = $("<tr>")
+                        for(var j=0; j<head_text.length; j++){
+                            $tr.append($("<th>").text(head_text[j]))
+                        }
+                        $table.append($tr)
+                    }
+                    for(var i=0; i<stores.length; i++){
+                        var $tr = $("<tr>")
+                        var store_keys = Object.keys(stores[i])
+                        for(var j=0; j<store_keys.length; j++){
+                            $tr.append($("<td>").text(stores[i][store_keys[j]]))
+                        }
+                        $table.append($tr)
+                    }
+                }
+            });
+        }
+        // gugun option이 남아있는 부분
+        // 새로운 gugun을 선택했는데도 table이 남아있는경우들 같은 경우 고쳐야함
+        // 함해봐라
+    </script>
+
+
+</head>
+<body>
+    <h1>Starbucks</h1>
+
+    <div id="wrapper">
+        <select id="sido">
+            <option value="0">시도선택</option>
+        </select>
+        <button id="img">그림</button>
+    </div>
+
+    <table id="result"></table>
+</body>
+</html>

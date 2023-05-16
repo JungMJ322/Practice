@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(function(){
+            $("div > p").eq(0).click(function(){
+                $("pre b").eq(0).toggle();
+            });
+
+            $('div > p').eq(1).click(function () {
+                $('pre b').slice(1,2).toggle();
+            })
+
+            $('div > p').eq(2).click(function () {
+                // $('pre b').first().css("color", "red");
+                // $("pre b").eq(2).toggle();
+
+                // 위에 두개 하나로 합치기
+                // 그냥 붙여서 합치면 안되지만 '.end()'를 이용해서 합친다
+                // 문장이 실행되다가 '.end()'를 만나면 $("pre b")를 다시불러 실행하도록 한다.
+                $("pre b").first().css("color", "red").end().eq(2).toggle();
+                // 검사 안하는 숙제!! api에 end()가 어떻게 쓰여있는지 확인
+                
+            });
+
+            $("div > p").eq(3).click(function(){
+                $("pre b").last().css("background-color", "skyblue")
+            });
+
+
+        });
+
+    </script>
+
+    
+</head>
+<body>
+    
+    <pre>
+        <b>eq(): 선택한 엘리먼트들 중에 인덱스로 탐색</b>
+        <b>slice(): 선택한 엘리먼트들 중에 인덱스 길이로 탐색</b>
+        <b>first(): 선택한 엘리먼트들 중에 첫번재 요소</b>
+        <b>last(): 선택한 엘리먼트들 중에 마지막 요소</b>
+    </pre>
+
+    <div>
+        <p>eq()</p>
+        <p>slice()</p>
+        <p>first()</p>
+        <p>last()</p>
+    </div>
+
+
+</body>
+</html>

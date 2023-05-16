@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function searchPar(){
+            var child02 = document.getElementsByTagName('p')[1]
+            var div = child02.parentNode
+            alert(div)
+            alert(typeof(div))
+            alert(div.nodeName)
+            div.style.backgroundColor = 'violet'
+        }
+
+        function searchChi(){
+            // nodeList 반환    node하나만 가지고 오고싶으면 [0]을 붙여 가지고 온다
+            // 1개를 가지고와도 nodeList 형태로 가지고 온다
+            var div = document.getElementsByTagName('div')[0]
+
+            // childNode에서는 div Tag에 있는 'tag + 공백(text노드)' 까지 가지고 온다
+            // 그래서 length가 7이 된다
+            var divChildren = div.childNodes;
+
+            // child02 블럭 배경색 파란색으로
+            divChildren[3].style.backgroundColor = 'blue'
+
+
+            for(var i=0; i<divChildren.length; i++){
+                console.log(divChildren[i].nodeName)
+            }
+        }
+    </script>
+
+</head>
+<body>
+    
+    <h1>부모탐색, 자식탐색</h1>
+
+    <div>
+        <p>child01</p>
+        <p>child02</p>
+        <p>child03</p>
+    </div>
+
+    <button onclick='searchPar()'>부모탐색</button> <br>
+    <button onclick='searchChi()'>자식탐색</button>
+
+
+
+</body>
+</html>

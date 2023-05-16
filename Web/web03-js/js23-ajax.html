@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <script>
+        function ajaxTest(){
+            
+            // new 있으니까 객체 생성 XMLHttpRequest 통신을 도와주는 객체
+            var xhr = new XMLHttpRequest();
+
+            // 'readystate'가 바뀌는 이벤트
+            // 이는 callBack함수
+            xhr.onreadystatechange = function(){
+
+                // readyState == 4 => 요청의 완료  wep.pdf 27p
+                if(xhr.readyState == 4){
+                    // status == 200 => 정상 응답
+                    if(xhr.status == 200){
+                        // alert(xhr.responseText)
+                        var respXml = xhr.responseXML
+                        // console.log(respXml)
+                        // console.log(typeof(respXml))
+
+                        var table = document.getElementById('tb')
+
+                        // rows는 NodeList / 이 안에 있는 ROW는 Node
+                        var rows = respXml.getElementsByTagName('ROW')
+                        // console.log(rows)
+
+                        // 1. column 이름 만들기
+                        var columnTr = document.createElement('tr')
+                        for (var i=0; i<rows[i].children.length; i++){
+                            // ROW의 자식 Tag 이름들
+                            var th = document.createElement('th')
+                            var txt = document.createTextNode(rows[0].children[i].nodeName)
+
+                            th.appendChild(txt)
+                            columnTr.appendChild(th)
+                        }
+                        table.appendChild(columnTr)
+
+                        // 2. data 만들자
+                        for (var i=0; i<rows.length; i++){
+                            // tr 생성
+                            var tr = document.createElement("tr")
+
+                            // td 생성하기 위한 반복
+                            for(var j=0; j<rows[i].children.length; j++){
+                                var td = document.createElement("td")
+                                td.appendChild(document.createTextNode(rows[i].children[j].textContent))
+                                tr.appendChild(td)
+                            }
+                            table.appendChild(tr)
+                        }
+                    } 
+                }              
+            }
+
+            // get방식으로 요청, 해당 경로에
+            // 연결방식, 경로
+            xhr.open('GET', 'emplist.xml')
+            // 실행    소캣을 open한뒤 전송(send)
+            xhr.send()
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+    
+    <!-- 
+        ajax : Asynchronous Javascript And Xml
+        비 동기 통신                        확장된 마크업 언어 extention markup langeuge
+        => client랑 sever랑 동기 되지 않음
+        sever에서 respon 하는것은 문자열 형태로 응답해준다
+        callBack: call(호출)해야 back(값을 줌)을 한다
+                 이벤트를 실행시켜야 값을 준다
+     -->
+    <button onclick='ajaxTest()'>ajax</button>
+
+    <table id="tb" border="1"></table>
+
+
+</body>
+</html>
