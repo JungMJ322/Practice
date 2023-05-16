@@ -10,14 +10,14 @@
 
 ## Python
 
-- [01_park_walk]()
+- [01_park_walk](https://github.com/JungMJ322/Practice/blob/master/programmers/Python/01_park_walk.md)
 
-- [02_report_result]()
+- [02_report_result](https://github.com/JungMJ322/Practice/blob/master/programmers/Python/02_report_result.md)
 
 
 
 ## MySQL
 
-- [01_check_contents]()
+- [01_check_contents](https://github.com/JungMJ322/Practice/blob/master/programmers/MySQL/01_check_contents.md)
 
-- [02_check_contents_case]()
+- [02_check_contents_case](https://github.com/JungMJ322/Practice/blob/master/programmers/MySQL/02_check_contents_case.md)
