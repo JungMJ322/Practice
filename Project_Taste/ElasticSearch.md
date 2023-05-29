@@ -4,7 +4,7 @@
 
 ```python
 #=======================================
-#            Elasticsearch 설치         =
+#            Elasticsearch 설치        =
 #=======================================
 # Download and install the public signing key:
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
@@ -30,7 +30,7 @@ curl -X GET "localhost:9200/?pretty"
 
 
 #=======================================
-#             logstash 설치             =
+#             logstash 설치            =
 #=======================================
 # install logstash
 sudo apt-get update && sudo apt-get install logstash
@@ -49,7 +49,7 @@ sudo systemctl stop logstash.service
 
 
 #=======================================
-#           mysql-connector 설치        =
+#          mysql-connector 설치        =
 #=======================================
 # 검색
 # mysql-connector-java 검색됨.
@@ -61,7 +61,7 @@ sudo apt-get install mysql-connector-java
 
 
 #=======================================
-#     logstash-integration-jdbc 설치    =
+#    logstash-integration-jdbc 설치    =
 #=======================================
 # /usr/share/logstash
 /usr/share/logstash/bin/logstash-plugin install logstash-integration-jdbc
@@ -75,7 +75,7 @@ sudo apt-get install mysql-connector-java
 
 
 #=======================================
-#             *.conf 파일 설정           =
+#            *.conf 파일 설정           =
 #=======================================
 # /usr/share/logstash에 임의의 logstash conf파일을 만듬
 input {
@@ -149,7 +149,7 @@ output {
 }
 
 #=======================================
-#             logstash 실행             =
+#            logstash 실행             =
 #=======================================
 sudo /usr/share/logstash/bin/logstash -f inch.conf 
 # sudo /usr/share/logstash/bin/logstash -f /usr/share/logstash/store_store.conf
@@ -200,7 +200,7 @@ GET 'http://localhost:9200/inch/_search?size=1&pretty'
 
 
 #=======================================
-#                nori 설치              =
+#               nori 설치              =
 #=======================================
 # ElasticSearch에서 공식적으로 사용하는 한글 형태소 분석기
 # /usr/share/elasticsearch 에서

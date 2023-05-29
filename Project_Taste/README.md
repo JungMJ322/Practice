@@ -105,5 +105,6 @@
 
 - 현제 폴더에는 내가 작성한 코드만 있음
 - AWS EC2는 학원에서 프로젝트 기간 동안 지급받은 것으로 더 이상 접속할 수 없음
+- Logstash와 Elasticsearch 활용한 것을 정리한 [문서](https://github.com/JungMJ322/Practice/blob/master/Project_Taste/ElasticSearch.md)
 - [project_link](https://github.com/codnjs3575/Final_Team04)
 
