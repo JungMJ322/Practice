@@ -93,4 +93,4 @@
 - 현제 폴더에는 내가 작성한 코드만 있음
 - AWS EC2는 학원에서 프로젝트 기간 동안 지급받은 것으로 더 이상 접속할 수 없음
 - DS팀과 함께한 통합 프로젝트
-- [project_link](https://github.com/codnjs3575/Final_Team04)
+- [project_link](https://github.com/JungMJ322/Housing)
