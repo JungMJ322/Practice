@@ -4,4 +4,5 @@
 
 
 
-## [AI](https://github.com/JungMJ322/Practice/tree/master/AI)
+## <span style='color:black'>[AI](https://github.com/JungMJ322/Practice/tree/master/AI)</span>
+
